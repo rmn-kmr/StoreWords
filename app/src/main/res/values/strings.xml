@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Store words</string>
+    <string name="empty_not_saved">Empty not saved</string>
+    <string name="title_activity_entry">EntryActivity</string>
+</resources>
