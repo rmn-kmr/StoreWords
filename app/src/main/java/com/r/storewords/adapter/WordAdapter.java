@@ -6,8 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.r.storewords.MainActivity;
 import com.r.storewords.R;
 import com.r.storewords.model.Word;
 
@@ -18,10 +20,12 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordHolder> {
 
     private final LayoutInflater mInflater;
     List<Word> words;
+    Context mContext;
 
     public WordAdapter(Context context) {
         this.mInflater = LayoutInflater.from(context);
         words = new ArrayList<>();
+        mContext = context;
     }
 
     @NonNull
@@ -31,8 +35,14 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull WordHolder wordHolder, int i) {
+    public void onBindViewHolder(@NonNull WordHolder wordHolder,final int i) {
         wordHolder.wordView.setText(words.get(i).getWord());
+        wordHolder.removeIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity) mContext).removeWord(words.get(i).getWord());
+            }
+        });
     }
 
     @Override
@@ -48,10 +58,12 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordHolder> {
     public class WordHolder extends RecyclerView.ViewHolder{
 
         public TextView wordView;
+        public ImageButton removeIcon;
 
         public WordHolder(@NonNull View itemView) {
             super(itemView);
             wordView = itemView.findViewById(R.id.textView);
+            removeIcon = itemView.findViewById(R.id.delete);
         }
     }
 }

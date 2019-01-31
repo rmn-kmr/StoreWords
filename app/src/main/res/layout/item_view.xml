@@ -1,13 +1,27 @@
-<LinearLayout xmlns:android=
+<RelativeLayout xmlns:android=
     "http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="#000"
+    android:layout_margin="10dp">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:text="@string/word"
+        android:background="#000"
+        android:layout_toLeftOf="@+id/delete"
         style="@style/text_view_style"
         tools:text="placeholder text" />
-</LinearLayout>
+
+    <ImageButton
+         android:id="@+id/delete"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="15dp"
+        android:layout_centerVertical="true"
+        android:backgroundTint="#000"
+        android:src="@android:drawable/ic_menu_close_clear_cancel" />
+
+</RelativeLayout>

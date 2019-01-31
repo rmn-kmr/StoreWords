@@ -41,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void removeWord(String word){
+        wordViewModel.removeWord(word);
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

@@ -29,7 +29,13 @@ public class WordRepository {
             new InsertTask(wordDao).execute(word);
     }
 
-    private class InsertTask extends AsyncTask<Word, Void, String> {
+    public void removeWord(String word) {
+        if (word != null)
+            new DeleteTask(wordDao).execute(word);
+    }
+
+
+    private static class InsertTask extends AsyncTask<Word, Void, String> {
 
         private WordDao masyncWordDao;
 
@@ -40,6 +46,20 @@ public class WordRepository {
         @Override
         protected String doInBackground(Word... words) {
             masyncWordDao.insert(words[0]);
+            return null;
+        }
+    }
+    private static class DeleteTask extends AsyncTask<String, Void, String> {
+
+        private WordDao masyncWordDao;
+
+        public DeleteTask(WordDao wordDao) {
+            masyncWordDao = wordDao;
+        }
+
+        @Override
+        protected String doInBackground(String... words) {
+            masyncWordDao.delete(words[0]);
             return null;
         }
     }
